@@ -1,0 +1,17 @@
+.buttonWrap {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 10px 0;
+}
+
+.button {
+  color: white;
+  padding: 10px;
+  background-color: lightskyblue;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 150px;
+  font-weight: bold;
+}

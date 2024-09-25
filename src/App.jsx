@@ -16,7 +16,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
 
@@ -46,6 +46,8 @@ function App() {
       toast.error("This field can't be empty");
       return;
     }
+    setImages([]);
+    setPage(1);
     setQuery(query);
     form.reset();
   };

@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 
+import s from "./ImageModal.module.css";
+
 const ImageModal = ({ modalIsOpen, handleCloseModal, selectedImage }) => {
   if (!selectedImage) {
     return null;
@@ -7,25 +9,13 @@ const ImageModal = ({ modalIsOpen, handleCloseModal, selectedImage }) => {
 
   return (
     <Modal
+      className={s.modal}
       isOpen={modalIsOpen}
       onRequestClose={handleCloseModal}
       contentLabel="Image Modal"
-      style={{
-        overlay: {
-          backgroundColor: "rgba(0, 0, 0, 0.75)",
-        },
-        content: {
-          top: "50%",
-          left: "50%",
-          right: "auto",
-          bottom: "auto",
-          marginRight: "-50%",
-          transform: "translate(-50%, -50%)",
-        },
-      }}
     >
       <div>
-        <img src={selectedImage.urls.regular} alt="Selected" />
+        <img className={s.image} src={selectedImage.urls.regular} alt="Selected" />
       </div>
     </Modal>
   );

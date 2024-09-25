@@ -1,0 +1,12 @@
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  background-color: papayawhip;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
