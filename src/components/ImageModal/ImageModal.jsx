@@ -1,5 +1,4 @@
 import Modal from "react-modal";
-
 import s from "./ImageModal.module.css";
 
 const ImageModal = ({ modalIsOpen, handleCloseModal, selectedImage }) => {
@@ -9,7 +8,8 @@ const ImageModal = ({ modalIsOpen, handleCloseModal, selectedImage }) => {
 
   return (
     <Modal
-      className={s.modal}
+      className={s.Modal}
+      overlayClassName={s.Overlay}
       isOpen={modalIsOpen}
       onRequestClose={handleCloseModal}
       contentLabel="Image Modal"

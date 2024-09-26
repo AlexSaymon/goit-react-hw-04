@@ -19,6 +19,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     if (!query) return;
@@ -28,6 +29,7 @@ function App() {
         setIsError(false);
         setIsLoading(true);
         const data = await fetchArticles(page, query);
+        setTotalPages(data.total_pages);
         setImages((prev) => [...prev, ...data.results]);
       } catch {
         setIsError(true);
@@ -42,7 +44,7 @@ function App() {
     evt.preventDefault();
     const form = evt.target;
     const query = form.elements.query.value;
-    if (form.elements.query.value.trim() === "") {
+    if (query.trim() === "") {
       toast.error("This field can't be empty");
       return;
     }
@@ -53,7 +55,11 @@ function App() {
   };
 
   const handleLoadMore = () => {
-    setPage((prev) => prev + 1);
+    if (page < totalPages) {
+      setPage((prev) => prev + 1);
+    } else {
+      toast.error("No more images to load");
+    }
   };
 
   const handleOpenModal = (image) => {
@@ -63,6 +69,7 @@ function App() {
 
   const handleCloseModal = () => {
     setModalIsOpen(false);
+    setSelectedImage("");
   };
 
   return (
